@@ -284,23 +284,6 @@ int post_page = 1;
     }
     NSMutableDictionary *pic_info_dict = [self.array4cell objectAtIndex:rows];
     
-    
-    
-    //设置rect
-    cell.uiImageViewLeft.frame = CGRectMake(0, 0, [mTool getScreenWidthPix]/3.0, 150);
-    cell.uiImageViewMiddle.frame = CGRectMake([mTool getScreenWidthPix]/3.0+1, 0, [mTool getScreenWidthPix]/3.0, 150);
-    cell.uiImageViewRight.frame = CGRectMake([mTool getScreenWidthPix]*2/3.0+1, 0, [mTool getScreenWidthPix]/3.0, 150);
-    
-    
-    cell.uiLabelImageSizeLeft.frame = CGRectMake(0, 150-20, [mTool getScreenWidthPix]/3.0, 20);
-    cell.uiLabelImageSizeMiddle.frame = CGRectMake([mTool getScreenWidthPix]/3.0+1, 150-20, [mTool getScreenWidthPix]/3.0, 20);
-    cell.uiLabelImageSizeRight.frame = CGRectMake([mTool getScreenWidthPix]*2/3.0+1, 150-20, [mTool getScreenWidthPix]/3.0, 20);
-    
-    
-    cell.uiLabelImageIDLeft.frame = CGRectMake(0, 0, [mTool getScreenWidthPix]/3.0, 20);
-    cell.uiLabelImageIDMiddle.frame = CGRectMake([mTool getScreenWidthPix]/3.0+1, 0, [mTool getScreenWidthPix]/3.0, 20);
-    cell.uiLabelImageIDRight.frame = CGRectMake([mTool getScreenWidthPix]*2/3.0+1, 0, [mTool getScreenWidthPix]/3.0, 20);
-    
     //设置内容
     if (pic_info_dict != nil) {
         NSArray *array = [pic_info_dict allValues];
@@ -330,7 +313,7 @@ int post_page = 1;
             [cell.uiImageViewLeft setTag:rows*ROW_IN_MAX+ROW_IN_LEFT];
             [cell.uiImageViewLeft setImage:pic_info.preview_url_uiimage];
             cell.uiImageViewLeft.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-            [cell.uiLabelImageSizeLeft setText:[NSString stringWithFormat:@"%@ X %@",pic_info.jpeg_width,pic_info.jpeg_height]];
+            [cell.uiLabelImageSizeLeft setText:[NSString stringWithFormat:@"%@ x %@",pic_info.jpeg_width,pic_info.jpeg_height]];
             
             [cell.uiLabelImageIDLeft setText:pic_info.post_id];
             
@@ -358,7 +341,7 @@ int post_page = 1;
             [cell.uiImageViewMiddle setTag:rows*ROW_IN_MAX+ROW_IN_MIDDLE];
             [cell.uiImageViewMiddle setImage:pic_info.preview_url_uiimage];
             cell.uiImageViewLeft.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-            [cell.uiLabelImageSizeMiddle setText:[NSString stringWithFormat:@"%@ X %@",pic_info.jpeg_width,pic_info.jpeg_height]];
+            [cell.uiLabelImageSizeMiddle setText:[NSString stringWithFormat:@"%@ x %@",pic_info.jpeg_width,pic_info.jpeg_height]];
             
             
             [cell.uiLabelImageIDMiddle setText:pic_info.post_id];
@@ -386,7 +369,7 @@ int post_page = 1;
             [cell.uiImageViewRight setTag:rows*ROW_IN_MAX+ROW_IN_RIGHT];
             [cell.uiImageViewRight setImage:pic_info.preview_url_uiimage];
             cell.uiImageViewLeft.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-            [cell.uiLabelImageSizeRight setText:[NSString stringWithFormat:@"%@ X %@",pic_info.jpeg_width,pic_info.jpeg_height]];
+            [cell.uiLabelImageSizeRight setText:[NSString stringWithFormat:@"%@ x %@",pic_info.jpeg_width,pic_info.jpeg_height]];
             
             
             [cell.uiLabelImageIDRight setText:pic_info.post_id];
@@ -415,7 +398,7 @@ int post_page = 1;
             [cell.uiImageViewLeft setTag:rows*ROW_IN_MAX+ROW_IN_LEFT];
             [cell.uiImageViewLeft setImage:pic_info.preview_url_uiimage];
             cell.uiImageViewLeft.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-            [cell.uiLabelImageSizeLeft setText:[NSString stringWithFormat:@"%@ X %@",pic_info.jpeg_width,pic_info.jpeg_height]];
+            [cell.uiLabelImageSizeLeft setText:[NSString stringWithFormat:@"%@ x %@",pic_info.jpeg_width,pic_info.jpeg_height]];
             [cell.uiImageViewMiddle setImage:nil];
             [cell.uiImageViewRight setImage:nil];
             

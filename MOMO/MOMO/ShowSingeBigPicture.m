@@ -242,32 +242,7 @@ picture_data;
     subView.center = CGPointMake(self.imageviewScroll.contentSize.width,self.imageviewScroll.contentSize.height * 0.5 + offsetY);
 }
 -(void)matchWidthOrHeight:(CGSize)size {//size是原图的
-#if 0
-    if (size.height>size.width) {
-        self.uiimageview.frame =
-        CGRectMake(0, 0, _oldScrollRect.size.width, size.height*(_oldScrollRect.size.width/size.width));
-        self.imageviewScroll.contentSize =
-        CGSizeMake(_oldScrollRect.size.width, size.height*(_oldScrollRect.size.width/size.width));
-        self.imageviewScroll.minimumZoomScale=1;
-        [self.imageviewScroll setZoomScale:1];
-        
-    }
-    if (size.height<size.width){
-        self.uiimageview.frame =
-        CGRectMake(0, 0, size.width*(self.imageviewScroll.frame.size.height/size.height), self.imageviewScroll.frame.size.height);
-        self.imageviewScroll.contentSize =
-        CGSizeMake(self.uiimage.size.width*(_oldScrollRect.size.height/size.height), _oldScrollRect.size.height);
-        self.imageviewScroll.minimumZoomScale=1;
-        [self.imageviewScroll setZoomScale:1];
-        [self matchCenter];
-    }
-    if (size.height == size.width) {
-        self.uiimageview.frame = CGRectMake(0, 0, _oldScrollRect.size.width, size.height*(_oldScrollRect.size.width/size.width));
-        self.imageviewScroll.contentSize = CGSizeMake(_oldScrollRect.size.width, size.height*(_oldScrollRect.size.width/size.width));
-        self.imageviewScroll.minimumZoomScale=1;
-        [self.imageviewScroll setZoomScale:1];
-    }
-#endif
+
     // 重置UIImageView的Frame，让图片居中显示
     
     
@@ -367,10 +342,10 @@ picture_data;
 }
 
 
-- (void)starGetTagWithUrl:(id)sender withTagName:(id)name{
+- (void)starGetTagWithUrl:(id)tag_baseurl withTagName:(id)name{
     self.tag_data = [[NSMutableData alloc]init];
     self.validTagName = name;
-    NSString *stringurl = [NSString stringWithFormat:@"%@?name=%@",(NSString *)sender,self.validTagName];
+    NSString *stringurl = [NSString stringWithFormat:@"%@?name=%@",(NSString *)tag_baseurl,self.validTagName];
     NSURL *url=[NSURL URLWithString:[stringurl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     //创建一个请求
     NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:15] ;
@@ -481,9 +456,9 @@ picture_data;
     if ([[ori_Request.URL absoluteString] rangeOfString:BASE_TAG_URL].length>0) {
         NSString * data_Str = [[NSString alloc] initWithData:self.tag_data encoding:NSUTF8StringEncoding];
         //NSLog(@"\ndata_Str = \n%@",data_Str);
-        [self parseTagXml:data_Str findValidTagName:self.validTagName];
+        [self parseTagXml:data_Str findValidTagName:self.validTagName withConnection:connection];
         
-        [connection cancel];
+        
     }else{
         NSLog(@"下载图片完毕");
         
@@ -547,7 +522,9 @@ picture_data;
     return filename;
     
 }
--(void)parseTagXml:(id)sender findValidTagName:(NSString *)validTagName{
+-(void)parseTagXml:(id)sender
+  findValidTagName:(NSString *)validTagName
+    withConnection:(NSURLConnection *)connection{
     NSString *strDataXml = (NSString *)sender;
     NSArray *xml_Tags = [strDataXml componentsSeparatedByString:@"/>"];
     //NSLog(@"*xml_posts = %lu",(unsigned long)[xml_Tags count]);
@@ -564,8 +541,6 @@ picture_data;
             tagInfo.count = [[[[xml_Tag componentsSeparatedByString:@"count=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
             [self.aMutDictTagsInfo setObject:tagInfo.count forKey:validTagName];
             
-            
-            
             self.tagIndex = self.tagIndex+1;
             NSLog(@"self.tagIndex = %d",self.tagIndex);
             if (self.tagIndex<[mMu_Array_Tags count]) {
@@ -577,10 +552,10 @@ picture_data;
                     NSLog(@"aMutDictTagsInfo \nKEY=%@ ,count = %@",key,[self.aMutDictTagsInfo objectForKey:key]);
                 }
                 [opFile updateObjectIntoFile:self.cacheTagFileFullNamePath withObjData:self.aMutDictTagsInfo];
-                //            [self.aMutDictTagsInfo writeToFile:self.cacheTagFileFullNamePath atomically:YES];
             }
         }
     }
+    [connection cancel];
 }
 /*
  解析url得到以tags
