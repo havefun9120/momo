@@ -1,0 +1,679 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8081612D1CD88FBD000ADA30 /* favorite48.png in Resources */ = {isa = PBXBuildFile; fileRef = 8081612C1CD88FBD000ADA30 /* favorite48.png */; };
+		808161301CD89A47000ADA30 /* favorites_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 8081612E1CD89A47000ADA30 /* favorites_selected.png */; };
+		808161311CD89A47000ADA30 /* favorites.png in Resources */ = {isa = PBXBuildFile; fileRef = 8081612F1CD89A47000ADA30 /* favorites.png */; };
+		808161331CD89CC3000ADA30 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = 808161321CD89CC3000ADA30 /* more.png */; };
+		8081613C1CD9C8E4000ADA30 /* fit.png in Resources */ = {isa = PBXBuildFile; fileRef = 8081613A1CD9C8E4000ADA30 /* fit.png */; };
+		8081613D1CD9C8E4000ADA30 /* zoom_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 8081613B1CD9C8E4000ADA30 /* zoom_in.png */; };
+		808161401CD9F17B000ADA30 /* TagInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8081613F1CD9F17B000ADA30 /* TagInfo.m */; };
+		808161431CDAF0AB000ADA30 /* opFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 808161421CDAF0AB000ADA30 /* opFile.m */; };
+		8084AA901B395E6600E376BB /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 8084AA8F1B395E6600E376BB /* save.png */; };
+		8086D02E1CCF5BCC00A973E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8086D02B1CCF5BCC00A973E3 /* Default-568h@2x.png */; };
+		8086D02F1CCF5BCC00A973E3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8086D02C1CCF5BCC00A973E3 /* Default.png */; };
+		8086D0301CCF5BCC00A973E3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8086D02D1CCF5BCC00A973E3 /* Default@2x.png */; };
+		8086D0321CCF65D500A973E3 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8086D0311CCF65D500A973E3 /* AssetsLibrary.framework */; };
+		80A278641AE4A4A600575247 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A278631AE4A4A600575247 /* Foundation.framework */; };
+		80A278661AE4A4A600575247 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A278651AE4A4A600575247 /* CoreGraphics.framework */; };
+		80A278681AE4A4A600575247 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A278671AE4A4A600575247 /* UIKit.framework */; };
+		80A2786E1AE4A4A600575247 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80A2786C1AE4A4A600575247 /* InfoPlist.strings */; };
+		80A278701AE4A4A600575247 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A2786F1AE4A4A600575247 /* main.m */; };
+		80A278741AE4A4A600575247 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A278731AE4A4A600575247 /* AppDelegate.m */; };
+		80A278761AE4A4A600575247 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80A278751AE4A4A600575247 /* Images.xcassets */; };
+		80A2787D1AE4A4A600575247 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A2787C1AE4A4A600575247 /* XCTest.framework */; };
+		80A2787E1AE4A4A600575247 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A278631AE4A4A600575247 /* Foundation.framework */; };
+		80A2787F1AE4A4A600575247 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A278671AE4A4A600575247 /* UIKit.framework */; };
+		80A278951AE4A50B00575247 /* MomoMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A278931AE4A50B00575247 /* MomoMainViewController.m */; };
+		80A278961AE4A50B00575247 /* MomoMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80A278941AE4A50B00575247 /* MomoMainViewController.xib */; };
+		80A4DCFA1B009C1F004B3825 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 80A4DCF91B009C1F004B3825 /* background.png */; };
+		80A4DCFF1B00A508004B3825 /* ANBlurredImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A4DCFC1B00A508004B3825 /* ANBlurredImageView.m */; };
+		80A4DD001B00A508004B3825 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A4DCFE1B00A508004B3825 /* UIImage+BoxBlur.m */; };
+		80A4DD021B00A73D004B3825 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A4DD011B00A73D004B3825 /* QuartzCore.framework */; };
+		80A4DD041B00A75C004B3825 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A4DD031B00A75C004B3825 /* Accelerate.framework */; };
+		80A4DD071B00B3D4004B3825 /* ShowSingeBigPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 80A4DD061B00B3D4004B3825 /* ShowSingeBigPicture.m */; };
+		80A8FC4B1B3D3D7C003FE7E8 /* save3.png in Resources */ = {isa = PBXBuildFile; fileRef = 80A8FC4A1B3D3D7C003FE7E8 /* save3.png */; };
+		80BD61B81B01A04700B141E4 /* moe_time_out.png in Resources */ = {isa = PBXBuildFile; fileRef = 80BD61B71B01A04700B141E4 /* moe_time_out.png */; };
+		80BD61BA1B01A13800B141E4 /* ShowSingeBigPicture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80BD61B91B01A13800B141E4 /* ShowSingeBigPicture.xib */; };
+		80C0EF971B4BC1A600BFB3D4 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 80C0EF951B4BC1A600BFB3D4 /* next.png */; };
+		80C0EF981B4BC1A600BFB3D4 /* before.png in Resources */ = {isa = PBXBuildFile; fileRef = 80C0EF961B4BC1A600BFB3D4 /* before.png */; };
+		80C89CDC1CD4D98E00EAB009 /* MainTableListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80C89CDA1CD4D98E00EAB009 /* MainTableListCell.m */; };
+		80C89CDD1CD4D98E00EAB009 /* MainTableListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80C89CDB1CD4D98E00EAB009 /* MainTableListCell.xib */; };
+		80EBBD651AFCAD6C00F71DD4 /* PictureInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EBBD641AFCAD6C00F71DD4 /* PictureInfo.m */; };
+		80EBBD691AFCB7DF00F71DD4 /* PICircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EBBD681AFCB7DF00F71DD4 /* PICircularProgressView.m */; };
+		80EBBD6C1AFCBAFC00F71DD4 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 80EBBD6B1AFCBAFC00F71DD4 /* Tool.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		80A278801AE4A4A600575247 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A278581AE4A4A600575247 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80A2785F1AE4A4A600575247;
+			remoteInfo = MOMO;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8081612C1CD88FBD000ADA30 /* favorite48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite48.png; sourceTree = "<group>"; };
+		8081612E1CD89A47000ADA30 /* favorites_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites_selected.png; sourceTree = "<group>"; };
+		8081612F1CD89A47000ADA30 /* favorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorites.png; sourceTree = "<group>"; };
+		808161321CD89CC3000ADA30 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
+		8081613A1CD9C8E4000ADA30 /* fit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fit.png; sourceTree = "<group>"; };
+		8081613B1CD9C8E4000ADA30 /* zoom_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zoom_in.png; sourceTree = "<group>"; };
+		8081613E1CD9F17B000ADA30 /* TagInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagInfo.h; sourceTree = "<group>"; };
+		8081613F1CD9F17B000ADA30 /* TagInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagInfo.m; sourceTree = "<group>"; };
+		808161411CDAF0AB000ADA30 /* opFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opFile.h; sourceTree = "<group>"; };
+		808161421CDAF0AB000ADA30 /* opFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = opFile.m; sourceTree = "<group>"; };
+		8084AA8F1B395E6600E376BB /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		8086D02B1CCF5BCC00A973E3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8086D02C1CCF5BCC00A973E3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8086D02D1CCF5BCC00A973E3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8086D0311CCF65D500A973E3 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		80A278601AE4A4A600575247 /* MOMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80A278631AE4A4A600575247 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		80A278651AE4A4A600575247 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		80A278671AE4A4A600575247 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		80A2786B1AE4A4A600575247 /* MOMO-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MOMO-Info.plist"; sourceTree = "<group>"; };
+		80A2786D1AE4A4A600575247 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		80A2786F1AE4A4A600575247 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		80A278711AE4A4A600575247 /* MOMO-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MOMO-Prefix.pch"; sourceTree = "<group>"; };
+		80A278721AE4A4A600575247 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		80A278731AE4A4A600575247 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		80A278751AE4A4A600575247 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		80A2787B1AE4A4A600575247 /* MOMOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MOMOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80A2787C1AE4A4A600575247 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		80A278921AE4A50B00575247 /* MomoMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MomoMainViewController.h; sourceTree = "<group>"; };
+		80A278931AE4A50B00575247 /* MomoMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MomoMainViewController.m; sourceTree = "<group>"; };
+		80A278941AE4A50B00575247 /* MomoMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MomoMainViewController.xib; sourceTree = "<group>"; };
+		80A4DCF91B009C1F004B3825 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		80A4DCFB1B00A508004B3825 /* ANBlurredImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANBlurredImageView.h; sourceTree = "<group>"; };
+		80A4DCFC1B00A508004B3825 /* ANBlurredImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANBlurredImageView.m; sourceTree = "<group>"; };
+		80A4DCFD1B00A508004B3825 /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
+		80A4DCFE1B00A508004B3825 /* UIImage+BoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BoxBlur.m"; sourceTree = "<group>"; };
+		80A4DD011B00A73D004B3825 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		80A4DD031B00A75C004B3825 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		80A4DD051B00B3D4004B3825 /* ShowSingeBigPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowSingeBigPicture.h; sourceTree = "<group>"; };
+		80A4DD061B00B3D4004B3825 /* ShowSingeBigPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowSingeBigPicture.m; sourceTree = "<group>"; };
+		80A8FC4A1B3D3D7C003FE7E8 /* save3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save3.png; sourceTree = "<group>"; };
+		80BD61B71B01A04700B141E4 /* moe_time_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moe_time_out.png; sourceTree = "<group>"; };
+		80BD61B91B01A13800B141E4 /* ShowSingeBigPicture.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowSingeBigPicture.xib; sourceTree = "<group>"; };
+		80C0EF951B4BC1A600BFB3D4 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
+		80C0EF961B4BC1A600BFB3D4 /* before.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = before.png; sourceTree = "<group>"; };
+		80C89CD91CD4D98E00EAB009 /* MainTableListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableListCell.h; sourceTree = "<group>"; };
+		80C89CDA1CD4D98E00EAB009 /* MainTableListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableListCell.m; sourceTree = "<group>"; };
+		80C89CDB1CD4D98E00EAB009 /* MainTableListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableListCell.xib; sourceTree = "<group>"; };
+		80EBBD631AFCAD6C00F71DD4 /* PictureInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureInfo.h; sourceTree = "<group>"; };
+		80EBBD641AFCAD6C00F71DD4 /* PictureInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureInfo.m; sourceTree = "<group>"; };
+		80EBBD671AFCB7DF00F71DD4 /* PICircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PICircularProgressView.h; sourceTree = "<group>"; };
+		80EBBD681AFCB7DF00F71DD4 /* PICircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PICircularProgressView.m; sourceTree = "<group>"; };
+		80EBBD6A1AFCBAFC00F71DD4 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		80EBBD6B1AFCBAFC00F71DD4 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80A2785D1AE4A4A600575247 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8086D0321CCF65D500A973E3 /* AssetsLibrary.framework in Frameworks */,
+				80A4DD041B00A75C004B3825 /* Accelerate.framework in Frameworks */,
+				80A4DD021B00A73D004B3825 /* QuartzCore.framework in Frameworks */,
+				80A278661AE4A4A600575247 /* CoreGraphics.framework in Frameworks */,
+				80A278681AE4A4A600575247 /* UIKit.framework in Frameworks */,
+				80A278641AE4A4A600575247 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80A278781AE4A4A600575247 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80A2787D1AE4A4A600575247 /* XCTest.framework in Frameworks */,
+				80A2787F1AE4A4A600575247 /* UIKit.framework in Frameworks */,
+				80A2787E1AE4A4A600575247 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		80A278571AE4A4A600575247 = {
+			isa = PBXGroup;
+			children = (
+				80A278691AE4A4A600575247 /* MOMO */,
+				80A278621AE4A4A600575247 /* Frameworks */,
+				80A278611AE4A4A600575247 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		80A278611AE4A4A600575247 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80A278601AE4A4A600575247 /* MOMO.app */,
+				80A2787B1AE4A4A600575247 /* MOMOTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80A278621AE4A4A600575247 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8086D0311CCF65D500A973E3 /* AssetsLibrary.framework */,
+				80A4DD031B00A75C004B3825 /* Accelerate.framework */,
+				80A4DD011B00A73D004B3825 /* QuartzCore.framework */,
+				80A278631AE4A4A600575247 /* Foundation.framework */,
+				80A278651AE4A4A600575247 /* CoreGraphics.framework */,
+				80A278671AE4A4A600575247 /* UIKit.framework */,
+				80A2787C1AE4A4A600575247 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80A278691AE4A4A600575247 /* MOMO */ = {
+			isa = PBXGroup;
+			children = (
+				80A4DCF81B009A28004B3825 /* Res */,
+				80EBBD661AFCB7D400F71DD4 /* Comm */,
+				80EBBD621AFCAD5F00F71DD4 /* Data */,
+				80A278721AE4A4A600575247 /* AppDelegate.h */,
+				80A278731AE4A4A600575247 /* AppDelegate.m */,
+				80A278921AE4A50B00575247 /* MomoMainViewController.h */,
+				80A278931AE4A50B00575247 /* MomoMainViewController.m */,
+				80A278941AE4A50B00575247 /* MomoMainViewController.xib */,
+				80C89CD91CD4D98E00EAB009 /* MainTableListCell.h */,
+				80C89CDA1CD4D98E00EAB009 /* MainTableListCell.m */,
+				80C89CDB1CD4D98E00EAB009 /* MainTableListCell.xib */,
+				80A4DD051B00B3D4004B3825 /* ShowSingeBigPicture.h */,
+				80A4DD061B00B3D4004B3825 /* ShowSingeBigPicture.m */,
+				80BD61B91B01A13800B141E4 /* ShowSingeBigPicture.xib */,
+				80A278751AE4A4A600575247 /* Images.xcassets */,
+				80A2786A1AE4A4A600575247 /* Supporting Files */,
+			);
+			path = MOMO;
+			sourceTree = "<group>";
+		};
+		80A2786A1AE4A4A600575247 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8086D02B1CCF5BCC00A973E3 /* Default-568h@2x.png */,
+				8086D02C1CCF5BCC00A973E3 /* Default.png */,
+				8086D02D1CCF5BCC00A973E3 /* Default@2x.png */,
+				80A2786B1AE4A4A600575247 /* MOMO-Info.plist */,
+				80A2786C1AE4A4A600575247 /* InfoPlist.strings */,
+				80A2786F1AE4A4A600575247 /* main.m */,
+				80A278711AE4A4A600575247 /* MOMO-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80A4DCF81B009A28004B3825 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				808161321CD89CC3000ADA30 /* more.png */,
+				8081612E1CD89A47000ADA30 /* favorites_selected.png */,
+				8081612F1CD89A47000ADA30 /* favorites.png */,
+				8081613A1CD9C8E4000ADA30 /* fit.png */,
+				8081613B1CD9C8E4000ADA30 /* zoom_in.png */,
+				80C0EF951B4BC1A600BFB3D4 /* next.png */,
+				80C0EF961B4BC1A600BFB3D4 /* before.png */,
+				80A8FC4A1B3D3D7C003FE7E8 /* save3.png */,
+				8084AA8F1B395E6600E376BB /* save.png */,
+				80BD61B71B01A04700B141E4 /* moe_time_out.png */,
+				8081612C1CD88FBD000ADA30 /* favorite48.png */,
+				80A4DCF91B009C1F004B3825 /* background.png */,
+			);
+			path = Res;
+			sourceTree = "<group>";
+		};
+		80EBBD621AFCAD5F00F71DD4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				80EBBD631AFCAD6C00F71DD4 /* PictureInfo.h */,
+				80EBBD641AFCAD6C00F71DD4 /* PictureInfo.m */,
+				8081613E1CD9F17B000ADA30 /* TagInfo.h */,
+				8081613F1CD9F17B000ADA30 /* TagInfo.m */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		80EBBD661AFCB7D400F71DD4 /* Comm */ = {
+			isa = PBXGroup;
+			children = (
+				808161411CDAF0AB000ADA30 /* opFile.h */,
+				808161421CDAF0AB000ADA30 /* opFile.m */,
+				80A4DCFB1B00A508004B3825 /* ANBlurredImageView.h */,
+				80A4DCFC1B00A508004B3825 /* ANBlurredImageView.m */,
+				80A4DCFD1B00A508004B3825 /* UIImage+BoxBlur.h */,
+				80A4DCFE1B00A508004B3825 /* UIImage+BoxBlur.m */,
+				80EBBD6A1AFCBAFC00F71DD4 /* Tool.h */,
+				80EBBD6B1AFCBAFC00F71DD4 /* Tool.m */,
+				80EBBD671AFCB7DF00F71DD4 /* PICircularProgressView.h */,
+				80EBBD681AFCB7DF00F71DD4 /* PICircularProgressView.m */,
+			);
+			path = Comm;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		80A2785F1AE4A4A600575247 /* MOMO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80A2788C1AE4A4A600575247 /* Build configuration list for PBXNativeTarget "MOMO" */;
+			buildPhases = (
+				80A2785C1AE4A4A600575247 /* Sources */,
+				80A2785D1AE4A4A600575247 /* Frameworks */,
+				80A2785E1AE4A4A600575247 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MOMO;
+			productName = MOMO;
+			productReference = 80A278601AE4A4A600575247 /* MOMO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		80A2787A1AE4A4A600575247 /* MOMOTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80A2788F1AE4A4A600575247 /* Build configuration list for PBXNativeTarget "MOMOTests" */;
+			buildPhases = (
+				80A278771AE4A4A600575247 /* Sources */,
+				80A278781AE4A4A600575247 /* Frameworks */,
+				80A278791AE4A4A600575247 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80A278811AE4A4A600575247 /* PBXTargetDependency */,
+			);
+			name = MOMOTests;
+			productName = MOMOTests;
+			productReference = 80A2787B1AE4A4A600575247 /* MOMOTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80A278581AE4A4A600575247 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = xiayin;
+				TargetAttributes = {
+					80A2785F1AE4A4A600575247 = {
+						DevelopmentTeam = K4Q6RDJBUK;
+					};
+					80A2787A1AE4A4A600575247 = {
+						TestTargetID = 80A2785F1AE4A4A600575247;
+					};
+				};
+			};
+			buildConfigurationList = 80A2785B1AE4A4A600575247 /* Build configuration list for PBXProject "MOMO" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 80A278571AE4A4A600575247;
+			productRefGroup = 80A278611AE4A4A600575247 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				80A2785F1AE4A4A600575247 /* MOMO */,
+				80A2787A1AE4A4A600575247 /* MOMOTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		80A2785E1AE4A4A600575247 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80BD61B81B01A04700B141E4 /* moe_time_out.png in Resources */,
+				8086D02E1CCF5BCC00A973E3 /* Default-568h@2x.png in Resources */,
+				808161331CD89CC3000ADA30 /* more.png in Resources */,
+				80BD61BA1B01A13800B141E4 /* ShowSingeBigPicture.xib in Resources */,
+				80A2786E1AE4A4A600575247 /* InfoPlist.strings in Resources */,
+				808161301CD89A47000ADA30 /* favorites_selected.png in Resources */,
+				808161311CD89A47000ADA30 /* favorites.png in Resources */,
+				8081612D1CD88FBD000ADA30 /* favorite48.png in Resources */,
+				8086D0301CCF5BCC00A973E3 /* Default@2x.png in Resources */,
+				8081613D1CD9C8E4000ADA30 /* zoom_in.png in Resources */,
+				80A4DCFA1B009C1F004B3825 /* background.png in Resources */,
+				80A278961AE4A50B00575247 /* MomoMainViewController.xib in Resources */,
+				8081613C1CD9C8E4000ADA30 /* fit.png in Resources */,
+				80C89CDD1CD4D98E00EAB009 /* MainTableListCell.xib in Resources */,
+				8084AA901B395E6600E376BB /* save.png in Resources */,
+				8086D02F1CCF5BCC00A973E3 /* Default.png in Resources */,
+				80C0EF981B4BC1A600BFB3D4 /* before.png in Resources */,
+				80A8FC4B1B3D3D7C003FE7E8 /* save3.png in Resources */,
+				80A278761AE4A4A600575247 /* Images.xcassets in Resources */,
+				80C0EF971B4BC1A600BFB3D4 /* next.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80A278791AE4A4A600575247 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		80A2785C1AE4A4A600575247 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				808161401CD9F17B000ADA30 /* TagInfo.m in Sources */,
+				80EBBD651AFCAD6C00F71DD4 /* PictureInfo.m in Sources */,
+				808161431CDAF0AB000ADA30 /* opFile.m in Sources */,
+				80A278951AE4A50B00575247 /* MomoMainViewController.m in Sources */,
+				80EBBD691AFCB7DF00F71DD4 /* PICircularProgressView.m in Sources */,
+				80C89CDC1CD4D98E00EAB009 /* MainTableListCell.m in Sources */,
+				80A4DCFF1B00A508004B3825 /* ANBlurredImageView.m in Sources */,
+				80EBBD6C1AFCBAFC00F71DD4 /* Tool.m in Sources */,
+				80A4DD001B00A508004B3825 /* UIImage+BoxBlur.m in Sources */,
+				80A4DD071B00B3D4004B3825 /* ShowSingeBigPicture.m in Sources */,
+				80A278741AE4A4A600575247 /* AppDelegate.m in Sources */,
+				80A278701AE4A4A600575247 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80A278771AE4A4A600575247 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		80A278811AE4A4A600575247 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80A2785F1AE4A4A600575247 /* MOMO */;
+			targetProxy = 80A278801AE4A4A600575247 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		80A2786C1AE4A4A600575247 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80A2786D1AE4A4A600575247 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		80A2788A1AE4A4A600575247 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: xia yin (4445U43UED)";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "5e1c79f7-4448-4e04-b62b-46d8effe7f4b";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		80A2788B1AE4A4A600575247 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: xia yin (4445U43UED)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PROVISIONING_PROFILE = "5e1c79f7-4448-4e04-b62b-46d8effe7f4b";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		80A2788D1AE4A4A600575247 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOMO/MOMO-Prefix.pch";
+				INFOPLIST_FILE = "MOMO/MOMO-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xy.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		80A2788E1AE4A4A600575247 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOMO/MOMO-Prefix.pch";
+				INFOPLIST_FILE = "MOMO/MOMO-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xy.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		80A278901AE4A4A600575247 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MOMO.app/MOMO";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOMO/MOMO-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MOMOTests/MOMOTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		80A278911AE4A4A600575247 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MOMO.app/MOMO";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOMO/MOMO-Prefix.pch";
+				INFOPLIST_FILE = "MOMOTests/MOMOTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		80B9589E1B0DBBAC000D364E /* adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: xia yin (K4Q6RDJBUK)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PROVISIONING_PROFILE = "cab9f43c-1741-4a3d-995a-6e9bbfe00df3";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = adhoc;
+		};
+		80B9589F1B0DBBAC000D364E /* adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOMO/MOMO-Prefix.pch";
+				INFOPLIST_FILE = "MOMO/MOMO-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xy.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = app;
+			};
+			name = adhoc;
+		};
+		80B958A01B0DBBAC000D364E /* adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MOMO.app/MOMO";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MOMO/MOMO-Prefix.pch";
+				INFOPLIST_FILE = "MOMOTests/MOMOTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = adhoc;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		80A2785B1AE4A4A600575247 /* Build configuration list for PBXProject "MOMO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80A2788A1AE4A4A600575247 /* Debug */,
+				80A2788B1AE4A4A600575247 /* Release */,
+				80B9589E1B0DBBAC000D364E /* adhoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80A2788C1AE4A4A600575247 /* Build configuration list for PBXNativeTarget "MOMO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80A2788D1AE4A4A600575247 /* Debug */,
+				80A2788E1AE4A4A600575247 /* Release */,
+				80B9589F1B0DBBAC000D364E /* adhoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80A2788F1AE4A4A600575247 /* Build configuration list for PBXNativeTarget "MOMOTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80A278901AE4A4A600575247 /* Debug */,
+				80A278911AE4A4A600575247 /* Release */,
+				80B958A01B0DBBAC000D364E /* adhoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 80A278581AE4A4A600575247 /* Project object */;
+}

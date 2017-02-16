@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowSingeBigPicture">
+            <connections>
+                <outlet property="favoritesBtn" destination="xhA-YI-niZ" id="n2q-az-2vI"/>
+                <outlet property="imageViewBlurredBG" destination="WV3-R9-dRs" id="wpa-3K-W1K"/>
+                <outlet property="imageviewScroll" destination="GUR-ki-6Tn" id="efp-lL-A1H"/>
+                <outlet property="moreBtn" destination="vbg-I8-Brn" id="c0q-Pq-Wh6"/>
+                <outlet property="view" destination="1" id="slU-uX-FcH"/>
+                <outlet property="zoomBtn" destination="YmO-BT-f1t" id="AUX-lC-mh4"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="WV3-R9-dRs" customClass="ANBlurredImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                </imageView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="GUR-ki-6Tn" customClass="ImageScrollView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jj2-VC-pMC">
+                    <rect key="frame" x="0.0" y="431" width="320" height="49"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbg-I8-Brn">
+                            <rect key="frame" x="244" y="4" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="0bu-MX-dZt"/>
+                                <constraint firstAttribute="width" constant="40" id="prN-lq-W70"/>
+                            </constraints>
+                            <state key="normal" image="more.png"/>
+                            <connections>
+                                <action selector="showMoreInfo:" destination="-1" eventType="touchUpInside" id="NoZ-4O-1eA"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YmO-BT-f1t">
+                            <rect key="frame" x="140" y="5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="mWG-Un-ewx"/>
+                                <constraint firstAttribute="height" constant="40" id="q8m-MI-TNJ"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="zoom_in.png"/>
+                            <connections>
+                                <action selector="zoomFitImage:" destination="-1" eventType="touchUpInside" id="MUF-u6-G9c"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-YI-niZ">
+                            <rect key="frame" x="37" y="4" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="DMY-US-3gf"/>
+                                <constraint firstAttribute="height" constant="40" id="WMY-MT-iBW"/>
+                            </constraints>
+                            <state key="normal" image="favorites_selected.png"/>
+                            <connections>
+                                <action selector="addFavorites:" destination="-1" eventType="touchUpInside" id="hmj-HW-z5f"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.85863972346571027" green="0.9059068662406321" blue="0.92321714743589745" alpha="0.65533405172413794" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="vbg-I8-Brn" secondAttribute="bottom" constant="5" id="58L-Ky-wK4"/>
+                        <constraint firstAttribute="trailing" secondItem="vbg-I8-Brn" secondAttribute="trailing" constant="36" id="5Tu-WD-0tz"/>
+                        <constraint firstItem="YmO-BT-f1t" firstAttribute="centerX" secondItem="Jj2-VC-pMC" secondAttribute="centerX" id="AiZ-63-7ii"/>
+                        <constraint firstAttribute="bottom" secondItem="xhA-YI-niZ" secondAttribute="bottom" constant="5" id="FBs-7x-Omi"/>
+                        <constraint firstItem="xhA-YI-niZ" firstAttribute="leading" secondItem="Jj2-VC-pMC" secondAttribute="leading" constant="37" id="HuH-RS-9B2"/>
+                        <constraint firstItem="YmO-BT-f1t" firstAttribute="top" secondItem="Jj2-VC-pMC" secondAttribute="top" constant="5" id="Hxu-9h-mI9"/>
+                        <constraint firstAttribute="height" constant="49" id="xnd-dL-Sye"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="WV3-R9-dRs" firstAttribute="top" secondItem="1" secondAttribute="top" id="4ER-Gc-if1"/>
+                <constraint firstAttribute="bottom" secondItem="Jj2-VC-pMC" secondAttribute="bottom" id="85s-xb-dKq"/>
+                <constraint firstItem="WV3-R9-dRs" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Cy7-MW-VlF"/>
+                <constraint firstAttribute="trailing" secondItem="WV3-R9-dRs" secondAttribute="trailing" id="Ua1-N3-M2N"/>
+                <constraint firstItem="Jj2-VC-pMC" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="eAm-A3-Bwc"/>
+                <constraint firstAttribute="bottom" secondItem="GUR-ki-6Tn" secondAttribute="bottom" id="eK2-uW-Dff"/>
+                <constraint firstItem="GUR-ki-6Tn" firstAttribute="top" secondItem="1" secondAttribute="top" id="eWC-eg-kJK"/>
+                <constraint firstAttribute="trailing" secondItem="Jj2-VC-pMC" secondAttribute="trailing" id="py4-Og-iEG"/>
+                <constraint firstItem="GUR-ki-6Tn" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="tEc-3B-Hcx"/>
+                <constraint firstAttribute="bottom" secondItem="WV3-R9-dRs" secondAttribute="bottom" id="y4K-ci-zwu"/>
+                <constraint firstAttribute="trailing" secondItem="GUR-ki-6Tn" secondAttribute="trailing" id="ybJ-mc-qka"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="154" y="293"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background.png" width="320" height="480"/>
+        <image name="favorites_selected.png" width="146" height="124"/>
+        <image name="more.png" width="72" height="72"/>
+        <image name="zoom_in.png" width="40" height="40"/>
+    </resources>
+</document>
