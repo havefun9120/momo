@@ -126,7 +126,7 @@ int post_page = 1;
     NSString * data_Str = [[NSString alloc] initWithData:self.m_data encoding:NSUTF8StringEncoding];
     //NSLog(@"*data_Str = %@", data_Str);
     pictureinfos = [[NSMutableArray alloc]initWithCapacity:3];
-    [self parseXml:data_Str];
+    
     [self packageXML2PostDict:data_Str];
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
@@ -135,12 +135,14 @@ int post_page = 1;
 -(void)packageXML2PostDict:(NSString *)xmlStr{
     _xml_posts = [xmlStr componentsSeparatedByString:@"/>"];
     self.postsDict = [[NSMutableDictionary alloc]init];
-    _dict1 = [[NSMutableDictionary alloc]init];
+//    _dict1 = [[NSMutableDictionary alloc]init];
     _dict2 = [[NSMutableDictionary alloc]init];
     _dict3 = [[NSMutableDictionary alloc]init];
     _dict4 = [[NSMutableDictionary alloc]init];
     _dict5 = [[NSMutableDictionary alloc]init];
     _dict6 = [[NSMutableDictionary alloc]init];
+    
+    self.array4cell = [[NSMutableArray alloc] init];
     int base_i = 3;
     for (int i =0; i<[_xml_posts count]-1; i++) {
         pictureinfo = [[PictureInfo alloc]init];
@@ -157,67 +159,29 @@ int post_page = 1;
         pictureinfo.is_held = [[[[xml_post componentsSeparatedByString:@"is_held=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
         pictureinfo.tags = [[[[xml_post componentsSeparatedByString:@"tags=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
         pictureinfo.rating = [[[[xml_post componentsSeparatedByString:@"rating=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        if (i<=2) {
+        if (i%3==0) {
+            _dict1 = [[NSMutableDictionary alloc]init];
+            [_dict1 setObject:pictureinfo forKey:pictureinfo.post_id];
+            if (i!=0) {
+                [self.array4cell addObject:_dict1];
+            }
+            
+        }else{
             [_dict1 setObject:pictureinfo forKey:pictureinfo.post_id];
         }
         
-        if (i<=5&&i>2) {
-            [_dict2 setObject:pictureinfo forKey:pictureinfo.post_id];
-        }
-        if (i<=8&&i>5) {
-            [_dict3 setObject:pictureinfo forKey:pictureinfo.post_id];
-        }
-        if (i<=11&&i>8) {
-            [_dict4 setObject:pictureinfo forKey:pictureinfo.post_id];
-        }
-        if (i<=14&&i>11) {
-            [_dict5 setObject:pictureinfo forKey:pictureinfo.post_id];
-        }
-        if (i>14) {
-            [_dict6 setObject:pictureinfo forKey:pictureinfo.post_id];
-        }
-//        [self.postsDict setObject:pictureinfo forKey:pictureinfo.post_id];
-        
-        
     }
     _int_per = 0;
-    self.array4cell = [[NSMutableArray alloc]initWithObjects:_dict1,_dict2,_dict3,_dict4,_dict5,_dict6, nil];
-    [self download_Image:_dict1];
-    [self download_Image:_dict2];
-    [self download_Image:_dict3];
-    [self download_Image:_dict4];
-    [self download_Image:_dict5];
-    [self download_Image:_dict6];
+    [self download_Images:self.array4cell];
+    
+    [self.mUserSetBackgroundPhoto setBlurTintColor:[UIColor clearColor]];
+    [self.mUserSetBackgroundPhoto generateBlurFramesWithCompletion:^{
+        [self.mUserSetBackgroundPhoto blurInAnimationWithDuration:0.25f];
+    }];
     
     NSLog(@"------------");
 }
-- (void)parseXml:(id)sender{
-    
-    NSString *xmlStringReady = sender;
-    NSArray *xml_posts = [xmlStringReady componentsSeparatedByString:@"/>"];
-    NSLog(@"*xml_posts = %lu",(unsigned long)[xml_posts count]);
-    NSMutableArray *parse_pictureinfos = [[NSMutableArray alloc]initWithCapacity:3];
-    for (int i =0; i<[xml_posts count]-1; i++) {
-        pictureinfo = [[PictureInfo alloc]init];
-        NSString *xml_post = [xml_posts objectAtIndex:i];
-        pictureinfo.actual_preview_width = [[[[xml_post componentsSeparatedByString:@"actual_preview_width=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.actual_preview_height = [[[[xml_post componentsSeparatedByString:@"actual_preview_height=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.preview_url = [[[[xml_post componentsSeparatedByString:@"preview_url=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.jpeg_width = [[[[xml_post componentsSeparatedByString:@"jpeg_width=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.jpeg_height = [[[[xml_post componentsSeparatedByString:@"jpeg_height=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.jpeg_url = [[[[xml_post componentsSeparatedByString:@"jpeg_url=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.file_size = [[[[xml_post componentsSeparatedByString:@"file_size=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.jpeg_file_size = [[[[xml_post componentsSeparatedByString:@"jpeg_file_size=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.post_id = [[[[xml_post componentsSeparatedByString:@"id=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.is_held = [[[[xml_post componentsSeparatedByString:@"is_held=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.tags = [[[[xml_post componentsSeparatedByString:@"tags=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        pictureinfo.rating = [[[[xml_post componentsSeparatedByString:@"rating=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
-        [parse_pictureinfos addObject:pictureinfo];
-    }
-    //[NSThread detachNewThreadSelector:@selector(DL_Image:)toTarget:self withObject:parse_pictureinfos];
-    
-    NSLog(@"debug");
-}
+
 -(void)download_Image:(NSMutableDictionary *)postsDict{
     [self.mUserSetBackgroundPhoto setBlurTintColor:[UIColor clearColor]];
     [self.mUserSetBackgroundPhoto generateBlurFramesWithCompletion:^{
@@ -227,6 +191,16 @@ int post_page = 1;
         [NSThread detachNewThreadSelector:@selector(stratDownload:)toTarget:self withObject:(NSString *)key_post_id];
     }
 }
+
+-(void)download_Images:(NSMutableArray *)array{
+    
+    for (NSMutableDictionary *adict in array) {
+        for (NSString *key_post_id in [adict allKeys]) {
+            [NSThread detachNewThreadSelector:@selector(stratDownload:)toTarget:self withObject:(NSString *)key_post_id];
+        }
+    }
+}
+
 -(void)stratDownload:(NSString *)userinfo{
     
     NSString *post_id = userinfo;
