@@ -135,15 +135,9 @@ int post_page = 1;
 -(void)packageXML2PostDict:(NSString *)xmlStr{
     _xml_posts = [xmlStr componentsSeparatedByString:@"/>"];
     self.postsDict = [[NSMutableDictionary alloc]init];
-//    _dict1 = [[NSMutableDictionary alloc]init];
-    _dict2 = [[NSMutableDictionary alloc]init];
-    _dict3 = [[NSMutableDictionary alloc]init];
-    _dict4 = [[NSMutableDictionary alloc]init];
-    _dict5 = [[NSMutableDictionary alloc]init];
-    _dict6 = [[NSMutableDictionary alloc]init];
     
     self.array4cell = [[NSMutableArray alloc] init];
-    int base_i = 3;
+
     for (int i =0; i<[_xml_posts count]-1; i++) {
         pictureinfo = [[PictureInfo alloc]init];
         NSString *xml_post = [_xml_posts objectAtIndex:i];
@@ -160,18 +154,22 @@ int post_page = 1;
         pictureinfo.tags = [[[[xml_post componentsSeparatedByString:@"tags=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
         pictureinfo.rating = [[[[xml_post componentsSeparatedByString:@"rating=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
         if (i%3==0) {
-            _dict1 = [[NSMutableDictionary alloc]init];
-            [_dict1 setObject:pictureinfo forKey:pictureinfo.post_id];
             if (i!=0) {
                 [self.array4cell addObject:_dict1];
             }
+            _dict1 = [[NSMutableDictionary alloc]init];
+            [_dict1 setObject:pictureinfo forKey:pictureinfo.post_id];
             
         }else{
             [_dict1 setObject:pictureinfo forKey:pictureinfo.post_id];
+            
         }
         
     }
     _int_per = 0;
+    
+    [self.array4cell addObject:_dict1];
+    
     [self download_Images:self.array4cell];
     
     [self.mUserSetBackgroundPhoto setBlurTintColor:[UIColor clearColor]];
@@ -180,16 +178,6 @@ int post_page = 1;
     }];
     
     NSLog(@"------------");
-}
-
--(void)download_Image:(NSMutableDictionary *)postsDict{
-    [self.mUserSetBackgroundPhoto setBlurTintColor:[UIColor clearColor]];
-    [self.mUserSetBackgroundPhoto generateBlurFramesWithCompletion:^{
-        [self.mUserSetBackgroundPhoto blurInAnimationWithDuration:0.25f];
-    }];
-    for (NSString *key_post_id in [postsDict allKeys]) {
-        [NSThread detachNewThreadSelector:@selector(stratDownload:)toTarget:self withObject:(NSString *)key_post_id];
-    }
 }
 
 -(void)download_Images:(NSMutableArray *)array{
@@ -223,14 +211,16 @@ int post_page = 1;
     
 }
 -(void)updataUI:(NSNumber *)sender{
+    NSLog(@"sender count = %f",[sender floatValue]);
     progressView.progress = ([sender floatValue]*(100/([_xml_posts count]-1)))/100.0;
-    NSLog(@"per = %f",[sender floatValue]);
-    NSLog(@"per = %f",([sender floatValue]*(100/[_xml_posts count])));
+    NSLog(@"progress per = %f",([sender floatValue]*(100/[_xml_posts count])));
     if ([sender floatValue] == ([_xml_posts count]-1)) {
         progressView.progress = 1.0;
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hidden_progressView) userInfo:nil repeats:NO];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
         _int_per = 0;
+    }else{
+        
     }
     [self.mPictureTable reloadData];
 }
