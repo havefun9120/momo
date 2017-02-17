@@ -125,6 +125,11 @@ int post_page = 1;
         pictureinfo.is_held = [[[[xml_post componentsSeparatedByString:@"is_held=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
         pictureinfo.tags = [[[[xml_post componentsSeparatedByString:@"tags=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
         pictureinfo.rating = [[[[xml_post componentsSeparatedByString:@"rating=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
+        
+        pictureinfo.sample_url = [[[[xml_post componentsSeparatedByString:@"sample_url=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
+        pictureinfo.sample_width = [[[[xml_post componentsSeparatedByString:@"sample_width=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
+        pictureinfo.sample_height = [[[[xml_post componentsSeparatedByString:@"sample_height=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
+        pictureinfo.sample_file_size = [[[[xml_post componentsSeparatedByString:@"sample_file_size=\""] objectAtIndex:1] componentsSeparatedByString:@"\""] objectAtIndex:0];
         if (i%3==0) {
             if (i!=0) {
                 [self.array4cell addObject:_dict1];
@@ -378,9 +383,9 @@ int post_page = 1;
     
     ShowSingeBigPicture *m_ShowSingeBigPicture = [[ShowSingeBigPicture alloc]init];
     m_ShowSingeBigPicture.smallImageView = [[UIImageView alloc]initWithImage:pic_info.preview_url_uiimage];
-    m_ShowSingeBigPicture.jpeg_url = pic_info.jpeg_url;
+    m_ShowSingeBigPicture.jpeg_url = pic_info.sample_url;
     m_ShowSingeBigPicture.file_size = pic_info.file_size;
-    m_ShowSingeBigPicture.jpeg_file_size = pic_info.jpeg_file_size;
+    m_ShowSingeBigPicture.jpeg_file_size = pic_info.sample_file_size;
     m_ShowSingeBigPicture.tags = pic_info.tags;
     [self.navigationController pushViewController:m_ShowSingeBigPicture animated:YES];
 }

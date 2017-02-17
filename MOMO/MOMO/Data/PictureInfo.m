@@ -24,4 +24,5 @@ tags,
 actual_preview_height,
 actual_preview_width,
 rating;
+
 @end

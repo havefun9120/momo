@@ -87,9 +87,16 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     NSLog(@"myconn didReceiveData");
     
-    [myData appendData:data];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDidReceiving object:nil userInfo:nil];
+    
+    NSURLRequest *ori_Request = connection.originalRequest;
+    if([[ori_Request.URL absoluteString] rangeOfString:BASE_TAG_URL].length>0) {
+        [myTagsData appendData:data];
+    }
+    if([[ori_Request.URL absoluteString] rangeOfString:BASE_POST_URL].length>0){
+        [myData appendData:data];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kDidReceiving object:nil userInfo:nil];
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{

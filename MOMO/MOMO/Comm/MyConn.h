@@ -17,6 +17,8 @@
     
     NSMutableData *myData;
     
+    NSMutableData *myTagsData;
+    
     BOOL mLoadFinish;
 }
 

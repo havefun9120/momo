@@ -9,20 +9,20 @@
 #import "ShowSingeBigPicture.h"
 
 @implementation ShowSingeBigPicture
-@synthesize
-jpeg_url,
-file_size,
-jpeg_file_size,
-tags,
-uiimage,
-uiimageview,
-uiimageviewloading,
-fileData,
-writeHandle,
-currentLength,
-sumLength,
-progress,
-picture_data;
+//@synthesize
+//jpeg_url,
+//file_size,
+//jpeg_file_size,
+//tags,
+//uiimage,
+//uiimageview,
+//uiimageviewloading,
+//fileData,
+//writeHandle,
+//currentLength,
+//sumLength,
+//progress,
+//picture_data;
 - (id)init{
     
     if (self) {
@@ -426,8 +426,8 @@ picture_data;
         double d = (double)(self.currentLength*100.00/self.sumLength);
         [mShowPer setText:[NSString stringWithFormat:@"%.0f",d]];
         [mShowPer setTextColor:[UIColor blackColor]];
-        double _progress = (double)self.currentLength/self.sumLength;
-        self.progress.progress = _progress;
+        double myProgress = (double)self.currentLength/self.sumLength;
+        self.progress.progress = myProgress;
         //一点一点接收数据。
         NSLog(@"接收到服务器的数据！---%lu",(unsigned long)data.length);
         //把data写入到创建的空文件中，但是不能使用writeTofile(会覆盖)
