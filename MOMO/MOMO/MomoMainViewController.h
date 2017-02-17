@@ -17,6 +17,7 @@
 
 
 #import "opFile.h"
+#import "MyConn.h"
 
 
 
@@ -28,7 +29,7 @@ typedef enum
     ROW_IN_MAX,//3
 }enumIdxTagInRow;
 
-@interface MomoMainViewController : UIViewController<NSXMLParserDelegate,NSURLConnectionDelegate,NSURLConnectionDataDelegate,UITableViewDataSource,UITableViewDelegate>{
+@interface MomoMainViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
     BOOL mLoadFinish;
     Tool *mTool;
     PICircularProgressView *progressView;

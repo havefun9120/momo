@@ -16,6 +16,7 @@
 #endif
 
 #define BASE_TAG_URL    @"https://yande.re/tag.xml"
+#define BASE_POST_URL    @"https://yande.re/post.xml?page="
 
 #define strTagCacheFileFullName     @"tagcache.plist"
 #define strTagCacheFileName     @"tagcache"

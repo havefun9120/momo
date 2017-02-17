@@ -51,18 +51,11 @@ picture_data;
     NSLog(@"*ShowSingeBigPicture_viewDidLoad");
     [self.view setUserInteractionEnabled:YES];
     
-    
-    
-    
-    
     mTool = [[Tool alloc]init];
     mMu_Array_Tags = [[NSMutableArray alloc]initWithCapacity:1];
     mMu_Array_Tags = [self parse_get_tags:self.tags];
     
-    
     [self initTagOperat];
-    
-    
     
     [self.view setBackgroundColor:[UIColor grayColor]];
 
