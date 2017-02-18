@@ -38,6 +38,7 @@
     mLoadFinish = NO;
     while(!mLoadFinish) {
         NSLog(@"*!finished");
+//        [[NSRunLoop currentRunLoop] run];
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
 }
@@ -46,6 +47,8 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     NSLog(@"myconn didFailWithError");
     mLoadFinish = YES;
+    myConn = connection;
+    [myConn cancel];
     [[NSNotificationCenter defaultCenter] postNotificationName:kDidFailConnection  object:nil userInfo:nil];
 }
 - (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection{
@@ -101,8 +104,15 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSLog(@"myconn connectionDidFinishLoading");
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kDidFinishLoading object:myData userInfo:nil];
     mLoadFinish = YES;
+//    myConn = connection;
+//    [myConn cancel];
+    
+    if ([[NSThread currentThread].name isEqualToString:@"Load_XML"]) {
+        
+    }
 }
 
 @end

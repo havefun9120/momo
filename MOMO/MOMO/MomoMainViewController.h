@@ -39,6 +39,12 @@ typedef enum
     CALayer *loadingLayer;
     float mfloat_load_url;
     UIButton *mNavigationRightBtn;
+    
+    NSThread *loadXmlThread;
+    
+    NSThread *downloadImgThread;
+    
+    NSString *ns_post_page;
 }
 @property (strong) IBOutlet ANBlurredImageView *mUserSetBackgroundPhoto;
 - (IBAction)beforePage:(id)sender;

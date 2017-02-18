@@ -48,6 +48,7 @@ int post_page = 1;
     [self.mUserSetBackgroundPhoto setBlurAmount:0.4];//雾化程度
     
     [NSThread detachNewThreadSelector:@selector(Load_XML:)toTarget:self withObject:Nil];//定义一个线程加载xml文件
+    
 }
 
 -(void)registerNotifications{
@@ -64,6 +65,7 @@ int post_page = 1;
 }
 
 -(void)didConnFinishLoadingRsp:(NSNotification *)noti{
+    
     mfloat_load_url = 100.0;
     NSString *temp = [NSString stringWithFormat:@"%f",mfloat_load_url];
     [self upDateProgressView:temp];
@@ -79,6 +81,8 @@ int post_page = 1;
 
 -(void)didConnFailConnectionRsp:(NSNotification *)noti{
     NSLog(@"error : %@",(NSError *)noti.object);
+    [self updateUI4ConnError:(NSError *)noti.object];
+    
 }
 
 #pragma mark - init fuctions
@@ -108,8 +112,12 @@ int post_page = 1;
     _xml_posts = [xmlStr componentsSeparatedByString:@"/>"];
     self.postsDict = [[NSMutableDictionary alloc]init];
     
-    self.array4cell = [[NSMutableArray alloc] init];
-
+    if (!self.array4cell) {
+        self.array4cell = [[NSMutableArray alloc] init];
+    }else{
+        [self.array4cell removeAllObjects];
+    }
+    
     for (int i =0; i<[_xml_posts count]-1; i++) {
         pictureinfo = [[PictureInfo alloc]init];
         NSString *xml_post = [_xml_posts objectAtIndex:i];
@@ -164,6 +172,7 @@ int post_page = 1;
     for (NSMutableDictionary *adict in array) {
         for (NSString *key_post_id in [adict allKeys]) {
             [NSThread detachNewThreadSelector:@selector(stratDownload:)toTarget:self withObject:(NSString *)key_post_id];
+            
         }
     }
 }
@@ -405,13 +414,20 @@ int post_page = 1;
     if (post_page != 1) {
         post_page--;
         NSLog(@"*post_page = %d",post_page);
-        NSString *ns_post_page = [NSString stringWithFormat:@"%d",post_page];
+        ns_post_page = [NSString stringWithFormat:@"%d",post_page];
+        
         [NSThread detachNewThreadSelector:@selector(Load_XML:)toTarget:self withObject:ns_post_page];
+        
+        
+        
     }else{
         NSLog(@"*已经是第一页了");
         post_page = 1;
-        NSString *ns_post_page = [NSString stringWithFormat:@"%d",post_page];
+        ns_post_page = [NSString stringWithFormat:@"%d",post_page];
+        
         [NSThread detachNewThreadSelector:@selector(Load_XML:)toTarget:self withObject:ns_post_page];
+       
+        
     }
 }
 
@@ -422,8 +438,12 @@ int post_page = 1;
     progressView.progress = 0;
     post_page++;
     NSLog(@"*post_page = %d",post_page);
-    NSString *ns_post_page = [NSString stringWithFormat:@"%d",post_page];
+    ns_post_page = [NSString stringWithFormat:@"%d",post_page];
+    
     [NSThread detachNewThreadSelector:@selector(Load_XML:)toTarget:self withObject:ns_post_page];
+    
+    
+    
 }
 
 @end
