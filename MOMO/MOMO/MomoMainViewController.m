@@ -21,7 +21,6 @@ int post_page = 1;
     if (self) {
         // Custom initialization
         [self registerNotifications];
-        stratDownloadThreadFlag = YES;
         self.title = @"全部";
         mNavigationRightBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         mNavigationRightBtn.frame = CGRectMake(0, 0, 40, 40);
@@ -68,7 +67,6 @@ int post_page = 1;
 }
 
 -(void)didConnFinishLoadingRsp:(NSNotification *)noti{
-    stratDownloadThreadFlag = YES;
     
     mfloat_load_url = 100.0;
     NSString *temp = [NSString stringWithFormat:@"%f",mfloat_load_url];
@@ -161,7 +159,6 @@ int post_page = 1;
     
     [self.array4cell addObject:_dict1];
     
-//    [self download_Images:self.array4cell];
     [self stratMutableDownload:self.array4cell];
     
     
@@ -173,37 +170,6 @@ int post_page = 1;
     NSLog(@"------------");
 }
 
-
-
--(void)download_Images:(NSMutableArray *)array{
-    
-    [NSThread detachNewThreadSelector:@selector(stratDownload:)toTarget:self withObject:array];
-    
-}
-
--(void)stratDownload:(NSArray *)array{
-    for (NSMutableDictionary *adict in array) {
-        for (NSString *key_post_id in [adict allKeys]) {
-            
-            if ([adict objectForKey:key_post_id]){
-                PictureInfo *pic_info = [adict objectForKey:key_post_id];
-                pic_info.preview_url_uiimage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:pic_info.preview_url]]];
-                
-                [adict setObject:pic_info forKey:key_post_id];
-                _int_per++;
-                
-                [self performSelectorOnMainThread:@selector(updataUI:) withObject:[NSString stringWithFormat:@"%d",_int_per] waitUntilDone:YES];
-                
-                if (stratDownloadThreadFlag == NO) {
-                    NSLog(@"*NSThread exit");
-                    [NSThread exit];
-                }
-            }
-            
-        }
-    }
-    [NSThread exit];
-}
 
 -(void)stratMutableDownload:(NSArray *)array{
     _threads=[NSMutableArray arrayWithCapacity:1];
@@ -233,22 +199,21 @@ int post_page = 1;
             if ([key_post_id isEqualToString:index]){
                 
                 PictureInfo *pic_info = [adict objectForKey:index];
-                
-//                pic_info.preview_url_uiimage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:pic_info.preview_url]]];
-                
-                imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:pic_info.preview_url]];
-                
+                @autoreleasepool {
+                    imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:pic_info.preview_url]];
+                    
+                }
                 
             }
             
         }
     }
-    
+    _countThreads++;
     NSThread *currentThread=[NSThread currentThread];
     
     //    如果当前线程处于取消状态，则退出当前线程
     if (currentThread.isCancelled) {
-        NSLog(@"thread(%@) will be cancelled!",currentThread);
+        NSLog(@"thread(%@) will be cancelled! with count : %d",currentThread,_countThreads);
         [NSThread exit];//取消当前线程
     }
     
@@ -292,26 +257,6 @@ int post_page = 1;
             
         }
     }
-}
-
--(void)updataUI:(NSNumber *)sender{
-    NSLog(@"sender count = %f",[sender floatValue]);
-    
-    [self show_progressView];
-    
-    progressView.progress = ([sender floatValue] / ([_xml_posts count]-1));
-    
-    NSLog(@"progress per = %f",([sender floatValue] / ([_xml_posts count]-1)));
-    if ([sender floatValue] == ([_xml_posts count]-1)) {
-        
-        progressView.progress = 1.0;
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hidden_progressView) userInfo:nil repeats:NO];
-        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
-        _int_per = 0;
-    }else{
-        
-    }
-    [self.mPictureTable reloadData];
 }
 
 -(void)updateUI4ConnError:(NSError *)error{

@@ -72,4 +72,6 @@ typedef enum
 
 @property(nonatomic,strong) NSMutableArray * threadArray;
 
+@property int countThreads;
+
 @end
