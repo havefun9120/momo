@@ -15,11 +15,13 @@
 @interface MyConn : NSObject<NSURLConnectionDelegate,NSURLConnectionDataDelegate>{
     NSURLConnection *myConn;
     
-    NSMutableData *myData;
+    NSMutableData *myPostXmlData;
     
     NSMutableData *myTagsData;
     
     BOOL mLoadFinish;
+    
+    NSMutableDictionary *myDict;
 }
 
 

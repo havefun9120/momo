@@ -21,7 +21,7 @@ int post_page = 1;
     if (self) {
         // Custom initialization
         [self registerNotifications];
-        
+        stratDownloadThreadFlag = YES;
         self.title = @"全部";
         mNavigationRightBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         mNavigationRightBtn.frame = CGRectMake(0, 0, 40, 40);
@@ -37,6 +37,8 @@ int post_page = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
     
     [self createTagCacheFileWithFileName:strTagCacheFileName withType:strTagCacheFileType];
     
@@ -61,14 +63,17 @@ int post_page = 1;
 -(void)didConnReceivingRsp:(NSNotification *)noti{
     mfloat_load_url++;
     NSString *temp = [NSString stringWithFormat:@"%f",mfloat_load_url];
-    [self upDateProgressView:temp];
+//    [self upDateProgressView:temp];
+    [self performSelectorOnMainThread:@selector(upDateProgressView:) withObject:temp waitUntilDone:YES];
 }
 
 -(void)didConnFinishLoadingRsp:(NSNotification *)noti{
+    stratDownloadThreadFlag = YES;
     
     mfloat_load_url = 100.0;
     NSString *temp = [NSString stringWithFormat:@"%f",mfloat_load_url];
-    [self upDateProgressView:temp];
+//    [self upDateProgressView:temp];
+    [self performSelectorOnMainThread:@selector(upDateProgressView:) withObject:temp waitUntilDone:YES];
     
     if ([noti.object isKindOfClass:[NSMutableData class]]) {
         NSString * data_Str = [[NSString alloc] initWithData:noti.object encoding:NSUTF8StringEncoding];
@@ -106,6 +111,7 @@ int post_page = 1;
     
     [[MyConn sharedInstance] pubInitWithRequest:Mu_url_request startImmediately:YES];
     
+    [NSThread exit];
 }
 
 -(void)packageXML2PostDict:(NSString *)xmlStr{
@@ -157,6 +163,7 @@ int post_page = 1;
     
     [self download_Images:self.array4cell];
     
+    
     [self.mUserSetBackgroundPhoto setBlurTintColor:[UIColor clearColor]];
     [self.mUserSetBackgroundPhoto generateBlurFramesWithCompletion:^{
         [self.mUserSetBackgroundPhoto blurInAnimationWithDuration:0.25f];
@@ -169,44 +176,43 @@ int post_page = 1;
 
 -(void)download_Images:(NSMutableArray *)array{
     
-    for (NSMutableDictionary *adict in array) {
-        for (NSString *key_post_id in [adict allKeys]) {
-            [NSThread detachNewThreadSelector:@selector(stratDownload:)toTarget:self withObject:(NSString *)key_post_id];
-            
-        }
-    }
+    [NSThread detachNewThreadSelector:@selector(stratDownload:)toTarget:self withObject:array];
+    
 }
 
--(void)stratDownload:(NSString *)userinfo{
-    
-    
-    NSString *post_id = userinfo;
-    
-    for (int i = 0; i<[self.array4cell count]; i++) {
-        NSMutableDictionary *adict = [self.array4cell objectAtIndex:i];
-        if ([adict objectForKey:post_id]) {
-            PictureInfo *pic_info = [adict objectForKey:post_id];
-            pic_info.preview_url_uiimage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:pic_info.preview_url]]];
+-(void)stratDownload:(NSArray *)withObject{
+    for (NSMutableDictionary *adict in withObject) {
+        for (NSString *key_post_id in [adict allKeys]) {
             
-            [adict setObject:pic_info forKey:post_id];
-            _int_per++;
-            
-            NSLog(@"stratDownload id = %@  | %d",post_id,_int_per);
-            
-            [self performSelectorOnMainThread:@selector(updataUI:) withObject:[NSNumber numberWithInt:_int_per] waitUntilDone:YES];
+            if ([adict objectForKey:key_post_id]){
+                PictureInfo *pic_info = [adict objectForKey:key_post_id];
+                pic_info.preview_url_uiimage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:pic_info.preview_url]]];
+                
+                [adict setObject:pic_info forKey:key_post_id];
+                _int_per++;
+                
+                [self performSelectorOnMainThread:@selector(updataUI:) withObject:[NSString stringWithFormat:@"%d",_int_per] waitUntilDone:YES];
+                
+                if (stratDownloadThreadFlag == NO) {
+                    NSLog(@"*NSThread exit");
+                    [NSThread exit];
+                }
+            }
             
         }
     }
-    
+    [NSThread exit];
 }
 -(void)updataUI:(NSNumber *)sender{
     NSLog(@"sender count = %f",[sender floatValue]);
+    
     [self show_progressView];
     
     progressView.progress = ([sender floatValue] / ([_xml_posts count]-1));
     
     NSLog(@"progress per = %f",([sender floatValue] / ([_xml_posts count]-1)));
     if ([sender floatValue] == ([_xml_posts count]-1)) {
+        
         progressView.progress = 1.0;
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hidden_progressView) userInfo:nil repeats:NO];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
@@ -407,7 +413,10 @@ int post_page = 1;
 }
 
 - (IBAction)beforePage:(id)sender {
+    stratDownloadThreadFlag = NO;
     mfloat_load_url = 0.01;
+    
+    _int_per = 0;
     
     [progressView setHidden:NO];
     progressView.progress = 0;
@@ -432,7 +441,11 @@ int post_page = 1;
 }
 
 - (IBAction)nextPage:(id)sender {
+    [self cancelThread];
+#if 0
     mfloat_load_url = 0.01;
+    
+    _int_per = 0;
     
     [progressView setHidden:NO];
     progressView.progress = 0;
@@ -441,9 +454,14 @@ int post_page = 1;
     ns_post_page = [NSString stringWithFormat:@"%d",post_page];
     
     [NSThread detachNewThreadSelector:@selector(Load_XML:)toTarget:self withObject:ns_post_page];
-    
-    
-    
+#endif
 }
-
+-(void)cancelThread{
+    for (NSThread * t in self.threadArray)
+    {
+        
+        [t cancel];
+        
+    }
+}
 @end

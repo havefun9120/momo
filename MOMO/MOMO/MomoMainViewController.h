@@ -40,9 +40,7 @@ typedef enum
     float mfloat_load_url;
     UIButton *mNavigationRightBtn;
     
-    NSThread *loadXmlThread;
-    
-    NSThread *downloadImgThread;
+    BOOL stratDownloadThreadFlag;
     
     NSString *ns_post_page;
 }
@@ -67,5 +65,9 @@ typedef enum
 @property (strong, nonatomic) NSMutableDictionary *dict6;
 
 @property CGRect oldImageCgrect;
+
+/** 存储线程*/
+
+@property(nonatomic,strong) NSMutableArray * threadArray;
 
 @end

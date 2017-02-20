@@ -15,7 +15,7 @@
     self=[super init];
     
     if (self) {
-        
+        myDict = [[NSMutableDictionary alloc]init];
     }
     
     return self;
@@ -31,7 +31,20 @@
 }
 
 -(void)pubInitWithRequest:(NSURLRequest *)request startImmediately:(BOOL)startImmediately{
-    myData = [[NSMutableData alloc]init];
+    
+    if([[request.URL absoluteString] rangeOfString:BASE_TAG_URL].length>0) {
+        
+    }
+    if([[request.URL absoluteString] rangeOfString:BASE_POST_URL].length>0){
+        myPostXmlData = [[NSMutableData alloc]init];
+    }
+    
+    
+    
+    if (myConn != nil) {
+        [myConn cancel];
+        myConn = nil;
+    }
     
     myConn = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
 
@@ -49,7 +62,8 @@
     mLoadFinish = YES;
     myConn = connection;
     [myConn cancel];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDidFailConnection  object:nil userInfo:nil];
+    myConn = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDidFailConnection  object:error userInfo:nil];
 }
 - (BOOL)connectionShouldUseCredentialStorage:(NSURLConnection *)connection{
     NSLog(@"myconn connectionShouldUseCredentialStorage");
@@ -97,7 +111,7 @@
         [myTagsData appendData:data];
     }
     if([[ori_Request.URL absoluteString] rangeOfString:BASE_POST_URL].length>0){
-        [myData appendData:data];
+        [myPostXmlData appendData:data];
         [[NSNotificationCenter defaultCenter] postNotificationName:kDidReceiving object:nil userInfo:nil];
     }
 }
@@ -105,14 +119,19 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSLog(@"myconn connectionDidFinishLoading");
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDidFinishLoading object:myData userInfo:nil];
-    mLoadFinish = YES;
-//    myConn = connection;
-//    [myConn cancel];
-    
-    if ([[NSThread currentThread].name isEqualToString:@"Load_XML"]) {
+    NSURLRequest *ori_Request = connection.originalRequest;
+    if([[ori_Request.URL absoluteString] rangeOfString:BASE_TAG_URL].length>0) {
         
     }
+    if([[ori_Request.URL absoluteString] rangeOfString:BASE_POST_URL].length>0){
+        [myDict setObject:myPostXmlData forKey:BASE_POST_URL];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kDidFinishLoading object:myPostXmlData userInfo:myDict];
+        mLoadFinish = YES;
+    }
+    
+    
+    [myConn cancel];
+    myConn = nil;
 }
 
 @end
