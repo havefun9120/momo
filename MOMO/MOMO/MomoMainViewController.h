@@ -43,6 +43,8 @@ typedef enum
     BOOL stratDownloadThreadFlag;
     
     NSString *ns_post_page;
+    
+    NSMutableArray *_threads;
 }
 @property (strong) IBOutlet ANBlurredImageView *mUserSetBackgroundPhoto;
 - (IBAction)beforePage:(id)sender;

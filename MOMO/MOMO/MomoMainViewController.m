@@ -161,7 +161,8 @@ int post_page = 1;
     
     [self.array4cell addObject:_dict1];
     
-    [self download_Images:self.array4cell];
+//    [self download_Images:self.array4cell];
+    [self stratMutableDownload:self.array4cell];
     
     
     [self.mUserSetBackgroundPhoto setBlurTintColor:[UIColor clearColor]];
@@ -180,8 +181,8 @@ int post_page = 1;
     
 }
 
--(void)stratDownload:(NSArray *)withObject{
-    for (NSMutableDictionary *adict in withObject) {
+-(void)stratDownload:(NSArray *)array{
+    for (NSMutableDictionary *adict in array) {
         for (NSString *key_post_id in [adict allKeys]) {
             
             if ([adict objectForKey:key_post_id]){
@@ -203,6 +204,96 @@ int post_page = 1;
     }
     [NSThread exit];
 }
+
+-(void)stratMutableDownload:(NSArray *)array{
+    _threads=[NSMutableArray arrayWithCapacity:1];
+    for (NSMutableDictionary *adict in array) {
+        for (NSString *key_post_id in [adict allKeys]) {
+            
+            if ([adict objectForKey:key_post_id]){
+                NSThread *thread=[[NSThread alloc]initWithTarget:self selector:@selector(loadAImage:) object:key_post_id];
+                [_threads addObject:thread];
+            }
+            
+        }
+    }
+    //循环启动线程
+    for (int i=0; i<[_threads count]; ++i) {
+        NSThread *thread= _threads[i];
+        [thread start];
+    }
+}
+
+#pragma mark 加载图片
+-(void)loadAImage:(NSString *)index{
+    NSData *imageData ;
+    for (NSMutableDictionary *adict in self.array4cell) {
+        for (NSString *key_post_id in [adict allKeys]) {
+            
+            if ([key_post_id isEqualToString:index]){
+                
+                PictureInfo *pic_info = [adict objectForKey:index];
+                
+//                pic_info.preview_url_uiimage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:pic_info.preview_url]]];
+                
+                imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:pic_info.preview_url]];
+                
+                
+            }
+            
+        }
+    }
+    
+    NSThread *currentThread=[NSThread currentThread];
+    
+    //    如果当前线程处于取消状态，则退出当前线程
+    if (currentThread.isCancelled) {
+        NSLog(@"thread(%@) will be cancelled!",currentThread);
+        [NSThread exit];//取消当前线程
+    }
+    
+    NSMutableDictionary *aDictData = [[NSMutableDictionary alloc]init];
+    if (imageData == nil) {
+        [self performSelectorOnMainThread:@selector(updataUIImage:) withObject:nil waitUntilDone:YES];
+        [NSThread exit];
+    }
+    [aDictData setObject:imageData forKey:index];
+    
+    [self performSelectorOnMainThread:@selector(updataUIImage:) withObject:aDictData waitUntilDone:YES];
+}
+
+-(void)updataUIImage:(id)sender{
+    NSMutableDictionary *aDict = sender;
+    NSString *index = [[aDict allKeys] objectAtIndex:0];
+    NSData *data = [[aDict allValues] objectAtIndex:0];
+    for (NSMutableDictionary *adict in self.array4cell) {
+        for (NSString *key_post_id in [adict allKeys]) {
+            
+            if ([key_post_id isEqualToString:index]){
+                PictureInfo *pic_info = [adict objectForKey:key_post_id];
+                pic_info.preview_url_uiimage = [UIImage imageWithData:data];
+                
+                [adict setObject:pic_info forKey:key_post_id];
+                _int_per++;
+                [self show_progressView];
+                NSLog(@"%f",(float)_int_per / ([_xml_posts count]-1));
+                progressView.progress = (float)_int_per / ([_xml_posts count]-1);
+                
+                if (_int_per == ([_xml_posts count]-1)) {
+                    
+                    progressView.progress = 1.0;
+                    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hidden_progressView) userInfo:nil repeats:NO];
+                    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+                    _int_per = 0;
+                }
+                
+                [self.mPictureTable reloadData];
+            }
+            
+        }
+    }
+}
+
 -(void)updataUI:(NSNumber *)sender{
     NSLog(@"sender count = %f",[sender floatValue]);
     
@@ -413,7 +504,7 @@ int post_page = 1;
 }
 
 - (IBAction)beforePage:(id)sender {
-    stratDownloadThreadFlag = NO;
+    [self stopLoadImage];
     mfloat_load_url = 0.01;
     
     _int_per = 0;
@@ -441,7 +532,7 @@ int post_page = 1;
 }
 
 - (IBAction)nextPage:(id)sender {
-    [self cancelThread];
+    [self stopLoadImage];
 #if 0
     mfloat_load_url = 0.01;
     
@@ -456,12 +547,16 @@ int post_page = 1;
     [NSThread detachNewThreadSelector:@selector(Load_XML:)toTarget:self withObject:ns_post_page];
 #endif
 }
--(void)cancelThread{
-    for (NSThread * t in self.threadArray)
-    {
-        
-        [t cancel];
-        
+#pragma mark 停止加载图片
+-(void)stopLoadImage{
+    for (int i=0; i<[_threads count]; i++) {
+        NSThread *thread= _threads[i];
+        //判断线程是否完成，如果没有完成则设置为取消状态
+        //注意设置为取消状态仅仅是改变了线程状态而言，并不能终止线程
+        if (!thread.isFinished) {
+            [thread cancel];
+            
+        }
     }
 }
 @end
