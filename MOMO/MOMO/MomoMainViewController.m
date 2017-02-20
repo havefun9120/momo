@@ -214,7 +214,8 @@ int post_page = 1;
     //    如果当前线程处于取消状态，则退出当前线程
     if (currentThread.isCancelled) {
         NSLog(@"thread(%@) will be cancelled! with count : %d",currentThread,_countThreads);
-        [NSThread exit];//取消当前线程
+        
+        [NSThread exit];
     }
     
     NSMutableDictionary *aDictData = [[NSMutableDictionary alloc]init];
